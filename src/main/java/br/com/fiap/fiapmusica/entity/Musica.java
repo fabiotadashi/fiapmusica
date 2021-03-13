@@ -1,11 +1,17 @@
 package br.com.fiap.fiapmusica.entity;
 
 import br.com.fiap.fiapmusica.dto.NovaMusicaDTO;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "TB_MUSICA")
+@EntityListeners(AuditingEntityListener.class)
 public class Musica {
 
     @Id
@@ -17,6 +23,14 @@ public class Musica {
     private int duracao;
 
     private String autor;
+
+    @Column(name = "data_criacao", nullable = false, updatable = false)
+    @CreatedDate
+    private Date dataCriacao;
+
+    @Column(name = "data_atualizacao", nullable = false)
+    @LastModifiedDate
+    private Date dataAtualizacao;
 
     public Musica(){}
 
@@ -56,5 +70,21 @@ public class Musica {
 
     public void setAutor(String autor) {
         this.autor = autor;
+    }
+
+    public Date getDataCriacao() {
+        return dataCriacao;
+    }
+
+    public void setDataCriacao(Date dataCricao) {
+        this.dataCriacao = dataCricao;
+    }
+
+    public Date getDataAtualizacao() {
+        return dataAtualizacao;
+    }
+
+    public void setDataAtualizacao(Date dataAtualizacao) {
+        this.dataAtualizacao = dataAtualizacao;
     }
 }
