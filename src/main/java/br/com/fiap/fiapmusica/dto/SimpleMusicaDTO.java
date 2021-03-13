@@ -1,5 +1,7 @@
 package br.com.fiap.fiapmusica.dto;
 
+import br.com.fiap.fiapmusica.entity.Musica;
+
 public class SimpleMusicaDTO {
 
     private int id;
@@ -7,9 +9,9 @@ public class SimpleMusicaDTO {
 
     public SimpleMusicaDTO(){}
 
-    public SimpleMusicaDTO(MusicaDTO musicaDTO){
-        this.id = musicaDTO.getId();
-        this.titulo = musicaDTO.getTitulo();
+    public SimpleMusicaDTO(Musica musica) {
+        this.id = musica.getId();
+        this.titulo = musica.getTitulo();
     }
 
     public int getId() {

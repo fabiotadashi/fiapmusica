@@ -1,21 +1,29 @@
-package br.com.fiap.fiapmusica.dto;
+package br.com.fiap.fiapmusica.entity;
 
-import br.com.fiap.fiapmusica.entity.Musica;
+import br.com.fiap.fiapmusica.dto.NovaMusicaDTO;
 
-public class MusicaDTO {
+import javax.persistence.*;
 
+@Entity
+@Table(name = "TB_MUSICA")
+public class Musica {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     private String titulo;
+
     private int duracao;
+
     private String autor;
 
-    public MusicaDTO(){}
+    public Musica(){}
 
-    public MusicaDTO(Musica musica) {
-        this.id = musica.getId();
-        this.titulo = musica.getTitulo();
-        this.autor = musica.getAutor();
-        this.duracao = musica.getDuracao();
+    public Musica(NovaMusicaDTO novaMusicaDTO) {
+        this.titulo = novaMusicaDTO.getTitulo();
+        this.autor = novaMusicaDTO.getAutor();
+        this.duracao = novaMusicaDTO.getDuracao();
     }
 
     public int getId() {
