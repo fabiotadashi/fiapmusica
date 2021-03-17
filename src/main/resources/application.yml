@@ -10,3 +10,6 @@ spring:
 fiap:
   debug: true
 
+jwt:
+  secret: s3cr37F14P
+  expire: 5
